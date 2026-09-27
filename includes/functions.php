@@ -81,8 +81,8 @@ function validate_product(array $data, PDO $pdo, ?int $exclude_id = null): array
     $name = trim($data['name'] ?? '');
     if ($name === '') {
         $errors['name'] = 'Nama produk wajib diisi.';
-    } elseif (mb_strlen($name) < 2 || mb_strlen($name) > 100) {
-        $errors['name'] = 'Nama produk harus 2-100 karakter.';
+    } elseif (mb_strlen($name) < 3 || mb_strlen($name) > 100) {
+        $errors['name'] = 'Nama produk harus 3-100 karakter.';
     } else {
         $sql = 'SELECT id FROM products WHERE name = ?';
         $params = [$name];

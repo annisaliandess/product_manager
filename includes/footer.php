@@ -2,7 +2,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>Product Manager &copy; <?= date('Y') ?></p>
+      <p>&copy; <?= date('Y') ?> Toko Bangunan Makmur. Dibangun dengan Desain Industrial Terbaru.</p>
     </div>
   </footer>
 

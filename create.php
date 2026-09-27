@@ -6,6 +6,12 @@ $errors = [];
 $old    = ['name' => '', 'category' => '', 'price' => '', 'stock' => ''];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $token = $_POST['csrf_token'] ?? '';
+    if (!verify_csrf($token)) {
+        flash('error', 'Token keamanan tidak valid. Coba lagi.');
+        header('Location: index.php');
+        exit;
+        
     $old = [
         'name'     => trim($_POST['name'] ?? ''),
         'category' => $_POST['category'] ?? '',
@@ -48,6 +54,8 @@ require_once __DIR__ . '/includes/header.php';
 
 <div class="form-card">
   <form method="post" action="create.php" enctype="multipart/form-data" novalidate>
+
+    <?= csrf_field() ?>
 
     <div class="form-group">
       <label for="name" class="form-label">Nama Produk</label>

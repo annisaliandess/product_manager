@@ -46,13 +46,14 @@ function build_qs(array $overrides): string
 require_once __DIR__ . '/includes/header.php';
 ?>
 
-<section class="toolbar">
+
+<div class="toolbar">
   <form class="search-box" method="get" action="index.php">
     <?php if ($cat): ?>
       <input type="hidden" name="category" value="<?= e($cat) ?>">
     <?php endif; ?>
     <span class="material-symbols-rounded" aria-hidden="true">search</span>
-    <input type="text" name="q" value="<?= e($q) ?>" placeholder="Cari produk..." autocomplete="off">
+    <input type="text" name="q" value="<?= e($q) ?>" placeholder="Cari material bangunan (semen, besi, cat)..." autocomplete="off">
   </form>
 
   <select class="filter-select" onchange="location.href='index.php'+buildCatQs(this.value)">
@@ -71,7 +72,7 @@ require_once __DIR__ . '/includes/header.php';
       Menampilkan <?= $from ?>-<?= $to ?> dari <?= $total ?> produk
     </div>
   <?php endif; ?>
-</section>
+</div>
 
 <?php if (empty($products)): ?>
   <div class="empty-state">
@@ -86,7 +87,7 @@ require_once __DIR__ . '/includes/header.php';
 <?php else: ?>
   <div class="product-grid">
     <?php foreach ($products as $p): ?>
-      <article class="product-card">
+      <div class="product-card">
         <div class="product-img-wrap">
           <?php if ($p['image'] && is_file(__DIR__ . '/uploads/' . $p['image'])): ?>
             <img src="uploads/<?= e($p['image']) ?>" alt="<?= e($p['name']) ?>" loading="lazy">
@@ -97,31 +98,28 @@ require_once __DIR__ . '/includes/header.php';
           <?php endif; ?>
         </div>
         <div class="product-body">
-          <span class="product-category" style="background:<?= e(category_color($p['category'])) ?>22;color:<?= e(category_color($p['category'])) ?>">
+          <span class="product-category" style="background: #cbd5e1; color: #0a1120;">
             <?= e($p['category']) ?>
           </span>
           <h3 class="product-name"><?= e($p['name']) ?></h3>
           <div class="product-price"><?= format_price((float) $p['price']) ?></div>
-          <div class="product-stock">
-            Stok:
-            <span class="<?= (int) $p['stock'] > 0 ? 'stock-ok' : 'stock-empty' ?>">
-              <?= (int) $p['stock'] > 0 ? e((string) $p['stock']) . ' unit' : 'Habis' ?>
-            </span>
+          <div class="product-stock <?= (int) $p['stock'] > 0 ? 'stock-ok' : 'stock-empty' ?>">
+            <?= (int) $p['stock'] > 0 ? 'Stok Tersedia (' . e((string) $p['stock']) . ' unit)' : 'Stok Habis' ?>
           </div>
           <div class="product-actions">
-            <a href="edit.php?id=<?= (int) $p['id'] ?>" class="btn btn-outline btn-sm">
+            <a href="edit.php?id=<?= (int) $p['id'] ?>" class="btn btn-primary btn-block">
               <span class="material-symbols-rounded" aria-hidden="true">edit</span> Edit
             </a>
             <form method="post" action="delete.php" class="delete-form" onsubmit="return confirm('Hapus produk ini?')">
               <input type="hidden" name="id" value="<?= (int) $p['id'] ?>">
               <?= csrf_field() ?>
-              <button type="submit" class="btn btn-danger btn-sm">
-                <span class="material-symbols-rounded" aria-hidden="true">delete</span> Hapus
+              <button type="submit" class="btn btn-outline" title="Hapus Produk">
+                <span class="material-symbols-rounded" aria-hidden="true">delete</span>
               </button>
             </form>
           </div>
         </div>
-      </article>
+      </div>
     <?php endforeach; ?>
   </div>
 

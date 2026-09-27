@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'product_manager';
+$db   = 'store_db';
 $user = 'root';
 $pass = '';
 

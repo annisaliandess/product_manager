@@ -22,12 +22,12 @@ Jika project berada di lokasi lain (misal `D:\Project\ProductManager`), buat Vir
 
 1. Buka **phpMyAdmin** (`http://localhost/phpmyadmin`)
 2. Klik tab **Import**
-3. Pilih file `sql/schema.sql`
+3. Pilih file `sql/store_db.sql`
 4. Klik **Go**
 
 Atau via terminal Laragon:
 ```bash
-mysql -u root < sql/schema.sql
+mysql -u root < sql/store_db.sql
 ```
 
 ### 3. Cek Koneksi Database
@@ -36,7 +36,7 @@ File `config/db.php` sudah disetel untuk default Laragon:
 - Host: `localhost`
 - User: `root`
 - Password: *(kosong)*
-- Database: `product_manager`
+- Database: `store_db`
 
 Ubah jika konfigurasi berbeda.
 
@@ -64,7 +64,7 @@ ProductManager/
   uploads/
     .htaccess           Blokir eksekusi PHP
   sql/
-    schema.sql          Skema database + seed data
+    store_db.sql          Skema database + seed data
   index.php             Daftar produk (Read)
   create.php            Tambah produk (Create)
   edit.php              Edit produk (Update)
@@ -80,7 +80,7 @@ ProductManager/
 | **Read** | Card grid responsif (Flexbox), search by nama, filter by kategori, pagination |
 | **Update** | Form edit terisi data, ganti gambar, validasi unik exclude self |
 | **Delete** | POST + CSRF token, konfirmasi browser, hapus file gambar |
-| **Validasi** | Nama 2-100 karakter + unik, harga > 0, stok >= 0, kategori valid |
+| **Validasi** | Nama 3-100 karakter + unik, harga > 0, stok >= 0, kategori valid |
 | **Keamanan** | PDO prepared statements, htmlspecialchars output, CSRF token, upload MIME check |
 | **Upload** | JPEG/PNG/WebP, maks 2MB, validasi tipe via finfo |
 | **Responsif** | 1-4 kolom sesuai viewport, mobile-first |
