@@ -22,12 +22,12 @@ Jika project berada di lokasi lain (misal `D:\Project\ProductManager`), buat Vir
 
 1. Buka **phpMyAdmin** (`http://localhost/phpmyadmin`)
 2. Klik tab **Import**
-3. Pilih file `sql/store_db.sql`
+3. Pilih file `database/store_db.sql`
 4. Klik **Go**
 
 Atau via terminal Laragon:
 ```bash
-mysql -u root < sql/store_db.sql
+mysql -u root < database/store_db.sql
 ```
 
 ### 3. Cek Koneksi Database

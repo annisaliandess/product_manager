@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= e($page_title ?? 'Produk') ?> - Toko Bangunan Makmur</title>
+  <title><?= e($page_title ?? 'Produk') ?> - Toko Bangunan Pacific Jaya</title>
   <meta name="description" content="Sistem manajemen produk toko bangunan">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.php" class="logo">
-        <span class="logo-mark">M</span>
+        <span class="logo-mark">PC</span>
         <div class="logo-text">
           <span class="logo-title">Pacific Jaya</span>
           <span class="logo-subtitle">Toko Bangunan</span>

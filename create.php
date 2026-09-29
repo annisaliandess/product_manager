@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         flash('error', 'Token keamanan tidak valid. Coba lagi.');
         header('Location: index.php');
         exit;
-        
+    }   
     $old = [
         'name'     => trim($_POST['name'] ?? ''),
         'category' => $_POST['category'] ?? '',
